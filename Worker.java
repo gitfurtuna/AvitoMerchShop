@@ -27,8 +27,7 @@ public class Worker {
     @Column(name = "balance/coins")
     private Long balance;
 
-    @ManyToOne
-    @JoinColumn(name = "merch", referencedColumnName = "id")
+    @OneToMany(mappedBy = "worker")
     private List<Merch> merch;
 
     @OneToMany(mappedBy = "sender")
