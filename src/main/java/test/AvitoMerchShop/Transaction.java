@@ -1,4 +1,4 @@
-package ru._21school.ru.student.rossartb.avitoshop.domain.model;
+package test.AvitoMerchShop;
 
 import jakarta.persistence.*;
 
@@ -28,3 +28,4 @@ public class Transaction {
     @Column(name = "date/time")
     private LocalDateTime date;
 }
+

@@ -1,4 +1,4 @@
-package ru._21school.ru.student.rossartb.avitoshop.domain.model;
+package test.AvitoMerchShop;
 
 import jakarta.persistence.*;
 
@@ -27,8 +27,9 @@ public class Worker {
     @Column(name = "balance/coins")
     private Long balance;
 
-    @OneToMany(mappedBy = "worker")
-    private List<Merch> merch;
+//    @ManyToOne
+//    @JoinColumn(name = "merch", referencedColumnName = "id")
+//    private List<Merch> merch;
 
     @OneToMany(mappedBy = "sender")
     private List<Transaction> sent;
@@ -60,9 +61,9 @@ public class Worker {
         return balance;
     }
 
-    public Merch getMerch() {
-        return merch;
-    }
+//    public Merch getMerch() {
+//        return merch;
+//    }
 
     public void updateBalance(Long coins) {
         if (this.balance + coins < 0) {

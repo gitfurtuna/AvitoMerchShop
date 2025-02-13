@@ -1,4 +1,4 @@
-package ru._21school.ru.student.rossartb.avitoshop.domain.model;
+package test.AvitoMerchShop;
 
 import jakarta.persistence.*;
 
@@ -10,11 +10,15 @@ public class Merch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
     @Column(name = "price")
     private Long price;
 
+    public Merch(String name, Long price) {
+        this.name = name;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -28,3 +32,4 @@ public class Merch {
         return price;
     }
 }
+
