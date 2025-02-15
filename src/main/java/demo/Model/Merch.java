@@ -1,6 +1,8 @@
-package test.AvitoMerchShop;
+package demo.Model;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "merch")
@@ -14,6 +16,9 @@ public class Merch {
     private String name;
     @Column(name = "price")
     private Long price;
+
+    @ManyToMany(mappedBy = "merch")
+    private List<Worker> workers;
 
     public Merch(String name, Long price) {
         this.name = name;

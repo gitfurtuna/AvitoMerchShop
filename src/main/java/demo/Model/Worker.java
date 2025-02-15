@@ -1,4 +1,4 @@
-package test.AvitoMerchShop;
+package demo.Model;
 
 import jakarta.persistence.*;
 
@@ -25,11 +25,15 @@ public class Worker {
     private String surname;
 
     @Column(name = "balance/coins")
-    private Long balance;
+    private Long balance = Long.valueOf(1000);
 
-//    @ManyToOne
-//    @JoinColumn(name = "merch", referencedColumnName = "id")
-//    private List<Merch> merch;
+    @ManyToMany
+    @JoinTable(
+            name = "worker_merch",
+            joinColumns = @JoinColumn(name = "worker_id"),
+            inverseJoinColumns = @JoinColumn(name = "merch_id")
+    )
+    private List<Merch> merch;
 
     @OneToMany(mappedBy = "sender")
     private List<Transaction> sent;
@@ -61,9 +65,19 @@ public class Worker {
         return balance;
     }
 
-//    public Merch getMerch() {
-//        return merch;
-//    }
+    public List<Merch> getMerch() { return merch; }
+
+    public List<Transaction> getSent() {
+        return sent;
+    }
+
+    public List<Transaction> getReceived() {
+        return received;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public void updateBalance(Long coins) {
         if (this.balance + coins < 0) {

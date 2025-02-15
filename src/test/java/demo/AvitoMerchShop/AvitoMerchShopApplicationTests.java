@@ -1,4 +1,4 @@
-package test.AvitoMerchShop;
+package demo.AvitoMerchShop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
