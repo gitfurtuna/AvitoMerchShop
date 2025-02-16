@@ -6,4 +6,5 @@ import demo.Model.Worker;
 
 @Repository
 public interface WorkerRepository extends JpaRepository<Worker,Long> {
+    Worker findByEmail(String email);
 }

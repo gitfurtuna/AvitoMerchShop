@@ -18,7 +18,7 @@ public class RegistrationController {
     private WorkerService workerService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody Worker worker) {
+    public ResponseEntity<String> register(@RequestBody Worker worker) {
         workerService.register(worker);
         return ResponseEntity.status(HttpStatus.OK).body("Worker registered successfully");
 

@@ -10,8 +10,8 @@ import demo.Model.Merch;
 import demo.Repository.MerchRepository;
 
 @SpringBootApplication
-@EnableJpaRepositories("test.Repository")
-@EntityScan(basePackages = "test.Model")
+@EnableJpaRepositories("demo.Repository")
+@EntityScan("demo.Model")
 public class AvitoMerchShopApplication {
 
 	public static void main(String[] args) {
