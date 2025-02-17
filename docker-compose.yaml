@@ -1,4 +1,22 @@
+version: '3.8'
+
 services:
+  avito-shop-service:
+    container_name: avito-shop-service
+    build: .
+    ports:
+     - "8080:6868"
+    environment:
+     SPRING_DATASOURCE_URL: jdbc:postgresql://avito-pg:5432/mydb
+     SPRING_DATASOURCE_USERNAME: user
+     SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      avito-pg:
+          condition: service_healthy
+    networks:
+      - internal
+
+
   avito-pg:
     image: postgres:latest
     container_name: avito-pg
@@ -10,6 +28,17 @@ services:
       - "5432:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d mydb" ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+      networks:
+        - internal
+
 
 volumes:
   pg_data:
+networks:
+  internal:
